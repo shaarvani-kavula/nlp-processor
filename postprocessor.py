@@ -14,7 +14,14 @@ def get_unstructured_text(text_col):
     pass
 
 
-
+def tokenize_text(text_col):
+    df['data'] = text_col
+    df['data'] = df['data'].str.lower()
+    df['data'] = df['data'].str.replace('[^\w\s]','')
+    df['data'] = df['data'].str.replace('\d+', '')
+    df['data'] = df['data'].apply(lambda x: ' '.join([word for word in x.split() if word not in (stop)]))
+    df['data'] = df['data'].apply(lambda x: [lemmatizer.lemmatize(y) for y in x.split()])
+    return df['data']
 
 
 def build_wordcloud(freq_dict, stop_words):
