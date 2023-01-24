@@ -14,15 +14,7 @@ def get_unstructured_text(text_col):
     pass
 
 
-def tokenize_text(text_col):
-    df['data'] = text_col
-    df['data'] = lowercase()
-    df['data'] = remove_punctuation()
-    df['data'] = remove_numbers()
-    df['data'] = stopwords()
-    df['data'] = 
-    return text_col
-    
+
 
 
 def build_wordcloud(freq_dict, stop_words):
