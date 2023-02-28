@@ -18,3 +18,8 @@ for post in ml_subreddit.hot(limit=10):
 posts = pd.DataFrame(posts,columns=['title', 'score', 'id', 'subreddit', 'url', 'num_comments', 'body', 'created'])
 print(posts)
 
+post_id_list = posts['id']
+for post_id in post_id_list:
+    submission = reddit.submission(post_id)
+    for top_level_comment in submission.comments:
+        print(top_level_comment.body)
